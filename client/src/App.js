@@ -5,10 +5,12 @@ import FeturesSection from "./Components/FeturesSection";
 import AboutPage from "./Components/AboutPage";
 import Subscribepage from "./Components/Subscribepage";
 import Contactpage from "./Components/Contactpage";
+import { useSpring, animated } from "@react-spring/core";
+import { Parallax } from "@react-spring/parallax";
 
 const App = () => {
   return (
-    <div className="relative">
+    <Parallax pages={5} className="relative">
       <div className="bg-gradient-to-bl from-blue-700 via-gray-800 to-black h-screen  absolute inset-0 custom-h">
         {/* <img src="lines.png" alt="" /> */}
       </div>
@@ -20,7 +22,7 @@ const App = () => {
         <AboutPage />
         <Contactpage />
       </div>
-    </div>
+    </Parallax>
   );
 };
 

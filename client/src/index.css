@@ -36,7 +36,7 @@ code {
 } */
 
 .custom-h {
-  height: 4500px;
+  height: 3900px;
 }
 #hero-text-1 {
   color: #fff;
@@ -110,7 +110,7 @@ code {
   margin-top: 150px;
 }
 .features-div {
-  margin-top: 105px;
+  margin-top: 50px;
 }
 .sub-text {
   color: #fff;
@@ -126,6 +126,7 @@ code {
   left: 50%;
   transform: translateX(-50%);
   margin-top: 140px;
+  z-index: 100000;
 }
 
 .plan-style {
@@ -136,6 +137,7 @@ code {
   border-radius: 20px;
   display: flex;
   justify-content: center;
+  z-index: 100;
 }
 
 .personal-details {
@@ -146,6 +148,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 .summary-me {
   color: #fff;
