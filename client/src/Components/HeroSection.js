@@ -21,6 +21,12 @@ const HeroSection = () => {
     to: { transform: "translateY(0)" },
     config: { tension: 30, friction: 8 },
   });
+
+  const ButtonProps = useSpring({
+    from: {transform: "translateY(120px)"},
+    to: { transform: "translateY(0)" },
+    config: { tension: 30, friction: 8 },
+  })
   return (
     <>
       <div className="hero-container">
@@ -35,9 +41,9 @@ const HeroSection = () => {
             Automated content extraction, <br />
             summarization, and podcast creation
           </animated.p>
-          <button id="hero-try">
+          <animated.button id="hero-try" style={ButtonProps}>
             <span className="Btn-text">Try</span>
-          </button>
+          </animated.button>
         </div>
         <div className="3d-img-container">
           <animated.img
