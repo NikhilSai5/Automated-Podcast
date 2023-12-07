@@ -42,7 +42,7 @@ const HeroSection = () => {
             summarization, and podcast creation
           </animated.p>
           <animated.button id="hero-try" style={ButtonProps}>
-            <span className="Btn-text">Try</span>
+            <span className="Btn-text">Listen</span>
           </animated.button>
         </div>
         <div className="3d-img-container">

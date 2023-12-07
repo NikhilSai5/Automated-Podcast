@@ -1,28 +1,16 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
-import HeroSection from "./Components/HeroSection";
-import FeturesSection from "./Components/FeturesSection";
-import AboutPage from "./Components/AboutPage";
-import Subscribepage from "./Components/Subscribepage";
-import Contactpage from "./Components/Contactpage";
-import { useSpring, animated } from "@react-spring/core";
-import { Parallax } from "@react-spring/parallax";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import Summery from "./Pages/Summery";
 
 const App = () => {
   return (
-    <Parallax pages={5} className="relative">
-      <div className="absolute inset-0 custom-h ">
-        {/* <img src="lines.png" alt="" /> */}
-      </div>
-      <div className="relative">
-        <Navbar />
-        <HeroSection />
-        <FeturesSection />
-        <Subscribepage />
-        <AboutPage />
-        <Contactpage />
-      </div>
-    </Parallax>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/summery" element={<Summery />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -11,12 +12,11 @@ const Navbar = () => {
             </div>
 
             <div className="flex space-x-4 text-white">
-              <a
-                href="#"
+              <Link to="/summery"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
                 App
-              </a>
+              </Link>
               <a
                 href="#"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
