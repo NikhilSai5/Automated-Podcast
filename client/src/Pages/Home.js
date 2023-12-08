@@ -9,21 +9,21 @@ import { useSpring, animated } from "@react-spring/core";
 import { Parallax } from "@react-spring/parallax";
 
 const Home = () => {
-    return (
-        <Parallax pages={5} className="relative">
-          <div className="absolute inset-0 custom-h" >
-            {/* <img src="lines.png" alt="" /> */}
-          </div>
-          <div className="relative">
-            <Navbar />
-            <HeroSection />
-            <FeturesSection />
-            <Subscribepage />
-            <AboutPage />
-            <Contactpage />
-          </div>
-        </Parallax>
-      );
-}
+  return (
+    <Parallax pages={5} className="relative">
+      <div className="absolute inset-0 custom-h">
+        {/* <img src="lines.png" alt="" /> */}
+      </div>
+      <div className="relative">
+        <Navbar />
+        <HeroSection />
+        <FeturesSection />
+        <Subscribepage />
+        <AboutPage />
+        <Contactpage />
+      </div>
+    </Parallax>
+  );
+};
 
-export default Home
+export default Home;
