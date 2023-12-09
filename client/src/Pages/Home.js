@@ -11,8 +11,9 @@ import { Parallax } from "@react-spring/parallax";
 const Home = () => {
   return (
     <Parallax pages={5} className="relative">
-      <div className="absolute inset-0 custom-h">
-        {/* <img src="lines.png" alt="" /> */}
+      
+      <div className="bg-gradient-to-bl from-blue-700 via-gray-800 to-black h-screen  absolute inset-0 custom-h">
+        {/* <img src="lines.png" alt="" />  -------> bgimage HERE<-------- */}
       </div>
       <div className="relative">
         <Navbar />
