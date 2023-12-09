@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer')
 
-async function scrape_through_link() {
+async function scrape_through_link(url) {
     try {
-        const url = 'https://dev.to/rgolawski/the-conundrum-of-the-top-x-articles-l55';
+        
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         await page.goto(url);
