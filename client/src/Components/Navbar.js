@@ -8,7 +8,8 @@ const Navbar = () => {
         <div className=" mx-auto px-10">
           <div className="flex items-center justify-between h-16">
             <div className="flex gap-10">
-              <span className="text-2xl text-white font-semibold">Podcast</span>
+              <Link to="/"><span className="text-2xl text-white font-semibold">Podcast</span></Link>
+              
             </div>
 
             <div className="flex space-x-4 text-white">

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
 import { ParallaxLayer } from "@react-spring/parallax";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   // Define animation properties for the parallax effect
@@ -42,7 +43,8 @@ const HeroSection = () => {
             summarization, and podcast creation
           </animated.p>
           <animated.button id="hero-try" style={ButtonProps}>
-            <span className="Btn-text">Listen</span>
+            <Link to="/summery"><span className="Btn-text">Listen</span></Link>
+            
           </animated.button>
         </div>
         <div className="3d-img-container">
