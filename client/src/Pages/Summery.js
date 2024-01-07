@@ -8,10 +8,12 @@ const Summery = () => {
   const [summaryText, setSummaryText] = useState('');
   const [heading, setHeading] = useState('');
   const [inputUrl, setInputUrl] = useState('')
+  const [url, setUrl] = useState('')
   
 
   const handleUrlSUbmit = async () => {
     try {
+      // fetch url, heading, raw_data
       const response = await fetch('http://localhost:5000/api/scrape', {
         method: 'POST',
         headers: {
@@ -22,17 +24,29 @@ const Summery = () => {
 
       if (response.ok) {
         const data = await response.json();
-        
-        setHeading(data.heading || 'no heading found');        
+        console.log(data.url)
+        setUrl(data.url)
+        setHeading(data.rawScraperData.heading || 'no heading found');        
       } else {
         console.error('Failed to fetch data from the server');
       }
 
+      // fetch summarized data
       const summarizedResponse = await fetch('http://localhost:9000/summarize-text');
     if (summarizedResponse.ok) {
       const summa_data = await summarizedResponse.json();
-      console.log(summa_data)
+      // console.log(summa_data)
       setSummaryText(summa_data);
+      // Save data to the database
+      const saveResponse = await fetch('http://localhost:8080/fetch-and-save', {
+        method: 'GET', 
+      });
+
+      if (saveResponse.ok) {
+        console.log('Data saved to the database successfully');
+      } else {
+        console.error('Failed to save data to the database');
+      }
     } else {
       console.error('Failed to fetch summarized data from the server');
     }
@@ -59,7 +73,7 @@ const Summery = () => {
             <div className='app-bottom p-9 text-white flex-1'>
               
                 <div className='display-fetched p-5 flex flex-col gap-4'>
-                  <h1 className='summary-txt-heading text-center mt-3'>{heading}</h1>
+                  <a href={url}><h1 className='summary-txt-heading text-center mt-3'>{heading}</h1></a>
                   <div className='p-10 text-slate-200'><ReactMarkdown>{summaryText}</ReactMarkdown></div>
                 </div>
               

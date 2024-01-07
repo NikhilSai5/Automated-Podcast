@@ -4,6 +4,7 @@ const Redis = require('redis');
 const summarize = require('./openAIApi/openAIutils');
 const cors = require('cors');
 
+
 const app = express();
 const port = 9000;
 

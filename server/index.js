@@ -1,48 +1,63 @@
-const express = require('express');
-const puppeteer = require('puppeteer');
+const express = require('express')
+const mongoose = require('mongoose')
+const DataModel = require("./Models/DataModel")
+const bodyParser = require('body-parser');
 const cors = require('cors')
-const redis = require('redis');
-const bodyParser = require('body-parser')
 
-
-const scrape_through_link = require('./puppeteer/GetArticles');
 
 const app = express();
-const port = 5000;
-const DEFAULT_EXPIRATION = 3600;
-
+const PORT = 8080;
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 
-const redisClient = redis.createClient();
+const DB = `mongodb+srv://nikhilsaimanam5:La3QhmGj4l4iPAm2@cluster0.b9kuh3f.mongodb.net/request?retryWrites=true&w=majority`;
 
-redisClient.on('error', (err) => {
-  console.error('Redis Error:', err);
-});
-
-app.post('/api/scrape', async (req,res) => {
-  try{
-    const {url} = req.body
-    if(!url){
-      return res.status(400).json({error: 'URL is required'});
-    }
-    await redisClient.connect();
-
-    const fetchedData = await scrape_through_link(url);
-    redisClient.setEx("raw_data", DEFAULT_EXPIRATION, JSON.stringify(fetchedData));
-
-    redisClient.quit();
-
-    res.json(fetchedData);
-  }catch(error){
-    console.log(error)
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+mongoose.connect(DB, {
+  
+}).then(() => {
+  console.log("connection with mongodb successfull")
+}).catch((error) => {
+  console.log(`error while connecting to mongoDB: ${error}`)
 })
 
 
+app.get("/server", async (req, res) => {
+    res.send("welcome to server connections")
+})
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+app.get("/fetch-and-save", async (req, res) => {
+    try{
+        console.log("entering server")
+        const resUrl = await fetch('http://localhost:5000/api/scrape', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json', },
+        });
+        
+        const fetchedURL = await resUrl.json();
+        console.log(fetchedURL.url)
+        
+        
+
+        const resSummarized = await fetch("http://localhost:9000/summarize-text");
+        const summarizedData = await resSummarized.json()
+
+        console.log(summarizedData)
+
+        const newData = new DataModel({
+            url: fetchedURL.url,
+            summarizedText: summarizedData,
+        })
+
+        await newData.save()
+
+        console.log('Data fetched and stored successfully')
+    }catch(error){
+        console.error(`Error fetching and storing data: ${error}`);
+        res.status(500).send('Internal Server Error');
+    }
+})
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+})
