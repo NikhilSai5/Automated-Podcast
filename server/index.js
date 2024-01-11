@@ -35,7 +35,7 @@ app.get("/fetch-and-save", async (req, res) => {
         });
         
         const fetchedURL = await resUrl.json();
-        console.log(fetchedURL.url)
+        console.log(fetchedURL.heading)
         
         
 
@@ -44,9 +44,19 @@ app.get("/fetch-and-save", async (req, res) => {
 
         console.log(summarizedData)
 
+        
+
+        const resAudio = await fetch("http://localhost:7000/api/summarize-tts")
+        const summarizedAudio = await resAudio.json()
+
+        console.log(summarizedAudio)
+        const audioBuffer = Buffer.from(summarizedAudio.audioContent.data);
+
         const newData = new DataModel({
             url: fetchedURL.url,
+            heading: fetchedURL.heading,
             summarizedText: summarizedData,
+            audioContent: audioBuffer,
         })
 
         await newData.save()
@@ -57,6 +67,8 @@ app.get("/fetch-and-save", async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 })
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

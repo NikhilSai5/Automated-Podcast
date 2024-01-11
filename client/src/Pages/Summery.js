@@ -2,6 +2,11 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown';
 import Navbar from '../Components/Navbar';
+import AudioPlayer from 'react-h5-audio-player'
+import 'react-h5-audio-player/lib/styles.css';
+
+
+
 
 
 const Summery = () => {
@@ -9,6 +14,7 @@ const Summery = () => {
   const [heading, setHeading] = useState('');
   const [inputUrl, setInputUrl] = useState('')
   const [url, setUrl] = useState('')
+  
   
 
   const handleUrlSUbmit = async () => {
@@ -35,24 +41,37 @@ const Summery = () => {
       const summarizedResponse = await fetch('http://localhost:9000/summarize-text');
     if (summarizedResponse.ok) {
       const summa_data = await summarizedResponse.json();
-      // console.log(summa_data)
+      
       setSummaryText(summa_data);
-      // Save data to the database
-      const saveResponse = await fetch('http://localhost:8080/fetch-and-save', {
-        method: 'GET', 
-      });
-
-      if (saveResponse.ok) {
-        console.log('Data saved to the database successfully');
-      } else {
-        console.error('Failed to save data to the database');
-      }
+            
     } else {
       console.error('Failed to fetch summarized data from the server');
     }
+
+   
+      const textToSpeech = await fetch('http://localhost:7000/api/summarize-tts', {
+        method: 'GET', 
+      })
+      
+      if (textToSpeech.ok){
+          const saveResponse = await fetch('http://localhost:8080/fetch-and-save', {
+            method: 'GET', 
+          });
+
+        if (saveResponse.ok) {
+          console.log('Data saved to the database successfully');
+        } else {
+          console.error('Failed to save data to the database');
+        }
+      }else{
+        console.log("failed to convert to audio file ")
+      }
+
     } catch (error) {
       console.log(error);
     }
+
+
   };
 
 
@@ -68,8 +87,16 @@ const Summery = () => {
               
               <input type='text' value={inputUrl} onChange={(e) => setInputUrl(e.target.value)} className='link-input rounded-2xl w-2/3 px-2 text-black h-9' placeholder='Paste your {URL}'/>
               <button className='summarize-button' onClick={handleUrlSUbmit}><span className='app-btn-txt'>Listen</span></button>
-            </div>
+            </div>          
+
+            {/* <AudioPlayer
+                autoPlay
+                src={`../storagetemp/${heading}.mp3`}
+                onPlay={e => console.log("onPlay")}
+    
+            /> */}
             
+
             <div className='app-bottom p-9 text-white flex-1'>
               
                 <div className='display-fetched p-5 flex flex-col gap-4'>

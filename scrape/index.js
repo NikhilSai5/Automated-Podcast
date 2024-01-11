@@ -53,7 +53,7 @@ app.route('/api/scrape')
       // Handle GET request logic here, if needed
 
       // Assuming you want to send a JSON response with the URL
-      res.status(200).json({ url: PostedUrl}); 
+      res.status(200).json({ url: PostedUrl, heading: PostedHeading}); 
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -67,9 +67,12 @@ app.route('/api/scrape')
       }
 
       PostedUrl = url
+      
       await redisClient.connect();
 
       const fetchedData = await scrape_through_link(url);
+
+      PostedHeading = fetchedData.heading
 
       const responseData = {
         url: url,

@@ -8,6 +8,7 @@ import Contactpage from "../Components/Contactpage";
 import { useSpring, animated } from "@react-spring/core";
 import { Parallax } from "@react-spring/parallax";
 
+
 const Home = () => {
   return (
     <Parallax pages={5} className="relative">
