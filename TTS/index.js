@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const tts = require("./googleTTSapi/ttsApi")
+const uploadFile = require("./googleTTSapi/googleStorage")
+
 const cors = require('cors')
 const fs = require("fs")
 
@@ -21,7 +23,7 @@ app.get('/api/summarize-tts', async (req, res) => {
         console.log(fetchedURL)
         console.log(fetchedURL.url)
         
-        
+
 
         const resSummarized = await fetch("http://localhost:9000/summarize-text");
         const summarizedData = await resSummarized.json()
@@ -32,7 +34,9 @@ app.get('/api/summarize-tts', async (req, res) => {
 
         fs.writeFileSync(filepath, summarizedAudio.audioContent);
 
-        console.log(`Audio saved to: ${filepath}`);
+        const uploadResult = await uploadFile(process.env.BUCKET_NAME, filepath , `${fetchedURL.heading}.mp3`)
+
+        console.log(`Audio uploaded to Google Cloud Storage: ${uploadResult.name}`);
 
         console.log(summarizedAudio)
         res.send(summarizedAudio)
@@ -46,3 +50,5 @@ app.get('/api/summarize-tts', async (req, res) => {
 app.listen(port, () => {
   console.log(`listening on port ${port}`)
 })
+
+

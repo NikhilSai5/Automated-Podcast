@@ -25,8 +25,5 @@ async function tts(text){
     }
 }
 
-// (async() => {
-//     tts("hello i am nikhil sai and i am using tts", "test.mp3")
-// })()
 
 module.exports = tts

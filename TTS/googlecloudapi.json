@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "superb-garden-410704",
+  "private_key_id": "fdebd092f5b122182a8c2b8fedb5c85b5246fa52",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDacpxaHJonn9yi\nHDleuA05fvuM3/SZ2Pv/tHTibMu/6Qzr8jt25C+mACrdJRAxd15sukZVKBmwg3Zx\nYKyJPBkMTs5AhnTXk/IGBFZ+15UJ6q+Bvr8Il/WDCncj7Yzypw2R/lV9/Uneow1w\nyaeHAcAdRneuMv7XiByk5rOVqn0TOnTCwxs2YBVUsQT+9/Kz3rhKhCSlxTK0KiIs\nwDo7q+O2wL/NbHByK4IEYpRoEF5T/ybQ72qd7W2TpN3v4TRC4G75pEW1sKkdv5VC\nfdXGA4lXHs2i0HxkLDaDfqfXBi53xb1yI3xQz+eUgAZghtS2sR7lW95Qh1ytf0z+\n3JqNVPLNAgMBAAECggEAIrgrHg5kOO6JWnGqc6HEplIGqKwSvB4W5VwY5MD+fETN\n8zVXmqynXxaxOV9R7M7IYPcVRSUfuiSW32vKWHCHGaPv16UXLola4vZvCe95Rm94\n0CIRSkweryJrb7gqmgmPmFfoXiMzCbH4Kag/Wm+eiXig/nyn8Pk29kWdnujPQs4R\nQgVW8sTCV4hniN7YZKmsPAW5bNLybYj34kGYDzPmAtcEya/8hE6u9sBZPZktJ2yX\nHW600pPixojOnZilRZGG4o4WQvsoNEH+GUhyTDMfyjirtwjZm4iC47t8XM/1sN57\nSCIIBYki38r2qXjHeOm6/fXtjUbbP2J9clCRI2vh8QKBgQDvLcatBAci+Lh0xIBg\nQhX7+6764U2Zt4BjbD08NKoFpq5obqzRVeLR7LpwOzvY7peduDgUxwQ9gkeznytd\n6t/oz8NCVmQm1MRloiFS5xKhBDCAV1BBN/gQv5rdrE9EC5ZpRRxh7fws3XURU58N\nJfJgHWi1ECRxgzyTW9W87E7GEQKBgQDpz5ZkyxaaxaI145DZYSyy5wbSfk8mZbBw\nLhUjQRPdZLIThTFF087BOWMd9u9UD73TCSz0WRDCpAmOjgxL1Cns1ouU+hfEsCNk\nMJcc8LyYfUpOs/txwT92Alry6hAfumctIe4AAdSDCzLJDAKAk4LcD1E19w6c4aeG\nkIONVIP0/QKBgBQp4sbxQPzExSAq9LuotpvAsxa5acZcvvkixeLOecryK1/ofK9F\nM1MJRwpxI/F849FLF4dA4+2fjxXohEpto6TH5ykviU/wvgHncjHAA0UJymD3e2+U\nHVikHpUzkpck9vA3AFaNLqZFoTntt8nu+gj6Ubp5+uiK7M9rfZBox5dRAoGBAIS3\nIFb2ME6KABk2ovHBBu5F1MmGiMby0cPbZIQuXGg+0BXkdKN+Js3nFSvdDtxYUxeH\nDc1lAO56zjHsz237cBDPd0uI6hTrJiuoqR30SBkGhTdHUmKvnqYNkDJySdS4qfgk\nWkQGxencYWddOc5h7NWcnCxVoCXMsJrhTMrcPkrBAoGAXzNOEg1mNwo6Bmyw61AI\nbpx4w0GwcN66HaKn6WM4w1lqpYFbokV/O9eaOEzRCBgri4y+16USWfkPkxzC7IPH\nL3NLqx2KpnlF/IMjvEU/GesPCRbj8xVhkaoq+uG5214GfeM2dUceKtSfhZh+TYrv\nrGyrrQxMtrO1CF3PiCTUjS0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "automaticpodcastcloudstorage@superb-garden-410704.iam.gserviceaccount.com",
+  "client_id": "115819026050078722037",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/automaticpodcastcloudstorage%40superb-garden-410704.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
