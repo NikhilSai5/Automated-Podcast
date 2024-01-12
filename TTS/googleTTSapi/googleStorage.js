@@ -24,12 +24,14 @@ async function uploadFile(bucketName, fileContent, fileOutputName) {
             stream.on('finish', resolve);
             stream.on('error', reject);
         });
+        
 
-        return { name: fileOutputName }; // Return the file name or any other relevant information
+        return { name: fileOutputName }; 
     } catch (error) {
         console.error('Error:', error);
         throw error;
     }
 }
+
 
 module.exports = uploadFile;
