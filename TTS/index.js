@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const tts = require("./googleTTSapi/ttsApi")
 const uploadFile = require("./googleTTSapi/googleStorage")
+const getURL = require('./googleTTSapi/getGoogleStorageURL')
 
 const cors = require('cors')
 const fs = require("fs")
@@ -28,19 +29,23 @@ app.get('/api/summarize-tts', async (req, res) => {
         const resSummarized = await fetch("http://localhost:9000/summarize-text");
         const summarizedData = await resSummarized.json()
         
-        const filepath = `../client/src/storagetemp/${fetchedURL.heading}.mp3`
+        // const filepath = `../client/src/storagetemp/${fetchedURL.heading}.mp3`
 
         const summarizedAudio = await tts(summarizedData)
 
-        fs.writeFileSync(filepath, summarizedAudio.audioContent);
+        // fs.writeFileSync(filepath, summarizedAudio.audioContent);
 
-        const uploadResult = await uploadFile(process.env.BUCKET_NAME, filepath , `${fetchedURL.heading}.mp3`)
+        // const uploadResult = await uploadFile(process.env.BUCKET_NAME, filepath , `${fetchedURL.heading}.mp3`)
+
+        const uploadResult = await uploadFile(process.env.BUCKET_NAME, summarizedAudio.audioContent, `${fetchedURL.heading}.mp3`);
+
 
         console.log(`Audio uploaded to Google Cloud Storage: ${uploadResult.name}`);
 
         console.log(summarizedAudio)
-        res.send(summarizedAudio)
-        
+        const mp3URL = await getURL(process.env.BUCKET_NAME,  `${fetchedURL.heading}.mp3`)
+        console.log(`google storage url is : ${mp3URL}`)
+        res.send(mp3URL)
 
     }catch(error){
         console.log(`error while converting to mp3: ${error}`)
