@@ -47,16 +47,16 @@ app.get("/fetch-and-save", async (req, res) => {
         
 
         const resAudio = await fetch("http://localhost:7000/api/summarize-tts")
-        const summarizedAudio = await resAudio.json()
+        const summarizedAudioURL = await resAudio.text()
 
-        console.log(summarizedAudio)
-        const audioBuffer = Buffer.from(summarizedAudio.audioContent.data);
+        console.log(summarizedAudioURL)
+        
 
         const newData = new DataModel({
             url: fetchedURL.url,
             heading: fetchedURL.heading,
             summarizedText: summarizedData,
-            audioContent: audioBuffer,
+            audioUrl: summarizedAudioURL,
         })
 
         await newData.save()

@@ -14,7 +14,7 @@ const Summery = () => {
   const [heading, setHeading] = useState('');
   const [inputUrl, setInputUrl] = useState('')
   const [url, setUrl] = useState('')
-  
+  const [audioURL, setAudioURL] = useState('')
   
 
   const handleUrlSUbmit = async () => {
@@ -52,6 +52,10 @@ const Summery = () => {
       const textToSpeech = await fetch('http://localhost:7000/api/summarize-tts', {
         method: 'GET', 
       })
+
+      const mp3URL = await textToSpeech.text()
+      setAudioURL(mp3URL);
+      
       
       if (textToSpeech.ok){
           const saveResponse = await fetch('http://localhost:8080/fetch-and-save', {
@@ -60,6 +64,7 @@ const Summery = () => {
 
         if (saveResponse.ok) {
           console.log('Data saved to the database successfully');
+          
         } else {
           console.error('Failed to save data to the database');
         }
@@ -89,12 +94,16 @@ const Summery = () => {
               <button className='summarize-button' onClick={handleUrlSUbmit}><span className='app-btn-txt'>Listen</span></button>
             </div>          
 
-            {/* <AudioPlayer
-                autoPlay
-                src={`../storagetemp/${heading}.mp3`}
-                onPlay={e => console.log("onPlay")}
-    
-            /> */}
+            <div className='px-9'>
+              {audioURL && 
+                    <AudioPlayer
+                    autoPlay
+                    src={audioURL}
+                    onPlay={e => console.log("onPlay")}
+                    className='rounded-xl'
+                    />
+              }
+            </div>
             
 
             <div className='app-bottom p-9 text-white flex-1'>

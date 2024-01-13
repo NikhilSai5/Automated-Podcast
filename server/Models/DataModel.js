@@ -11,8 +11,8 @@ const dataSchema = new mongoose.Schema({
   summarizedText: {
     type: String,
   },
-  audioContent: {
-    type: Buffer, 
+  audioUrl: {
+    type: String, 
   },
 
 });
