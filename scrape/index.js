@@ -3,6 +3,10 @@ const puppeteer = require("puppeteer");
 const cors = require("cors");
 const redis = require("redis");
 const bodyParser = require("body-parser");
+const jwt = require("express-jwt");
+const jwks = require("jwks-rsa");
+const axios = require("axios");
+const { auth } = require("express-oauth2-jwt-bearer");
 
 const scrape_through_link = require("./puppeteer/GetArticles");
 

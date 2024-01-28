@@ -6,8 +6,11 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Summery = () => {
+  const { getAccessTokenSilently } = useAuth0();
+
   const [summaryText, setSummaryText] = useState("");
   const [heading, setHeading] = useState("");
   const [inputUrl, setInputUrl] = useState("");
@@ -21,22 +24,27 @@ const Summery = () => {
       setHeadLoading(true);
       setLoading(true);
       // fetch url, heading, raw_data
-      const response = await fetch("http://localhost:5000/api/scrape", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url: inputUrl }),
-      });
+      try {
+        const response = await fetch("http://localhost:5000/api/scrape", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url: inputUrl }),
+          mode: "cors",
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data.url);
-        setUrl(data.url);
-        setHeading(data.rawScraperData.heading || "no heading found");
-        setHeadLoading(false);
-      } else {
-        console.error("Failed to fetch data from the server");
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data.url);
+          setUrl(data.url);
+          setHeading(data.rawScraperData.heading || "no heading found");
+          setHeadLoading(false);
+        } else {
+          console.error("Failed to fetch data from the server");
+        }
+      } catch (error) {
+        console.log(`error while craping ${error}`);
       }
 
       // fetch summarized data

@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+
   return (
     <>
       <nav className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-2xl bg-opacity-10 shadow-2xl border-slate-800">
@@ -16,6 +19,8 @@ const Navbar = () => {
             </div>
 
             <div className="flex space-x-4 text-white">
+              <p>user is {isAuthenticated ? "logged in" : "not logged in "}</p>
+              {/* {isAuthenticated && <p>{user.nickname}</p>} */}
               <Link
                 to="/summery"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
@@ -35,7 +40,7 @@ const Navbar = () => {
                 Contact
               </Link>
               <Link
-                to="/login"
+                onClick={loginWithRedirect}
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
                 Login
@@ -47,10 +52,10 @@ const Navbar = () => {
                 Register
               </Link>
               <Link
-                // onClick={logout}
+                onClick={logout}
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
-                Register
+                logout
               </Link>
             </div>
           </div>
