@@ -8,40 +8,50 @@ const Navbar = () => {
         <div className=" mx-auto px-10">
           <div className="flex items-center justify-between h-16">
             <div className="flex gap-10">
-              <Link to="/"><span className="text-2xl text-white font-semibold">Podcast</span></Link>
-              
+              <Link to="/">
+                <span className="text-2xl text-white font-semibold">
+                  Podcast
+                </span>
+              </Link>
             </div>
 
             <div className="flex space-x-4 text-white">
-              <Link to="/summery"
+              <Link
+                to="/summery"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
                 App
               </Link>
-              <a
+              <Link
                 href="#"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
                 Features
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
                 Contact
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/login"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
-                Pro
-              </a>
-              <a
-                href="#"
+                Login
+              </Link>
+              <Link
+                to="/signup"
                 className="hover:text-slate-200 transition ease-in-out delay-100"
               >
-                About
-              </a>
+                Register
+              </Link>
+              <Link
+                // onClick={logout}
+                className="hover:text-slate-200 transition ease-in-out delay-100"
+              >
+                Register
+              </Link>
             </div>
           </div>
         </div>

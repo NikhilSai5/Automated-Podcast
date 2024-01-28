@@ -19,32 +19,9 @@ redisClient.on("error", (err) => {
   console.error("Redis Error:", err);
 });
 
-// app.post('/api/scrape', async (req,res) => {
-//   try{
-//     const {url} = req.body
-//     if(!url){
-//       return res.status(400).json({error: 'URL is required'});
-//     }
-//     await redisClient.connect();
-
-//     const fetchedData = await scrape_through_link(url);
-
-//     const responseData = {
-//       url: url,
-//       rawScraperData: fetchedData,
-//     };
-
-//     redisClient.setEx("raw_data", DEFAULT_EXPIRATION, JSON.stringify(fetchedData));
-
-//     redisClient.quit();
-
-//     res.json(responseData);
-
-//   }catch(error){
-//     console.log(error)
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// })
+let PostedUrl = "";
+let PostedHeading = "";
+let PostedArticle = "";
 
 app
   .route("/api/scrape")
@@ -53,13 +30,11 @@ app
       // Handle GET request logic here, if needed
 
       // Assuming you want to send a JSON response with the URL
-      res
-        .status(200)
-        .json({
-          url: PostedUrl,
-          heading: PostedHeading,
-          articles: PostedArticle,
-        });
+      res.status(200).json({
+        url: PostedUrl,
+        heading: PostedHeading,
+        articles: PostedArticle,
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });

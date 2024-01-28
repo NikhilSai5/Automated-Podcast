@@ -86,69 +86,74 @@ const Summery = () => {
 
   return (
     <>
-      <div className="relative">
-        <div className="relative con-h">
-          <Navbar />
-          <div className="app-page-container flex flex-col ">
-            <div className="app-top text-white p-5 flex flex-col justify-center items-center gap-10 py-32 pb-[60px]">
-              <h1 className="app-heading-txt">
-                Listen <span className="app-like-heading">Like</span> Podcast{" "}
-              </h1>
+      <div className="bg-gradient-to-bl from-blue-700 via-gray-800 to-black inset-0 h-full">
+        <div className="">
+          <div className="">
+            <Navbar />
+            <div className="app-page-container flex flex-col h-full">
+              <div className="app-top text-white p-5 flex flex-col justify-center items-center gap-10 py-32 pb-[60px]">
+                <h1 className="app-heading-txt">
+                  Listen <span className="app-like-heading">Like</span> Podcast{" "}
+                </h1>
 
-              <input
-                type="text"
-                value={inputUrl}
-                onChange={(e) => setInputUrl(e.target.value)}
-                className="link-input rounded-2xl w-2/3 px-2 text-black h-9"
-                placeholder="Paste your {URL}"
-              />
-              <button className="summarize-button" onClick={handleUrlSUbmit}>
-                <span className="app-btn-txt">Listen</span>
-              </button>
-            </div>
-
-            <div className="px-9">
-              {audioURL && (
-                <AudioPlayer
-                  autoPlay
-                  src={audioURL}
-                  onPlay={(e) => console.log("onPlay")}
-                  className="rounded-xl"
+                <input
+                  type="text"
+                  value={inputUrl}
+                  onChange={(e) => setInputUrl(e.target.value)}
+                  className="link-input rounded-2xl w-2/3 px-2 text-black h-9"
+                  placeholder="Paste your {URL}"
                 />
-              )}
-            </div>
+                <button className="summarize-button" onClick={handleUrlSUbmit}>
+                  <span className="app-btn-txt">Listen</span>
+                </button>
+              </div>
 
-            <div className="app-bottom p-9 text-white flex-1">
-              <div className="display-fetched p-5 flex flex-col gap-4">
-                <div className="loading-ani">
-                  <SkeletonTheme baseColor="#454f5e" highlightColor="#475569">
-                    {headingLoading && (
-                      <div className="flex justify-center items-center pb-6">
-                        <h1>
-                          <Skeleton height={50} width={800} />
-                        </h1>
-                      </div>
-                    )}
-                    {loading && (
-                      <p className="p-10">
-                        <Skeleton width={1550} />
-                        <Skeleton width={1500} />
-                        <Skeleton width={1550} />
-                        <Skeleton width={1400} />
-                        <Skeleton width={1350} />
-                        <Skeleton width={1550} />
-                        <Skeleton width={500} />
-                      </p>
-                    )}
-                  </SkeletonTheme>
-                </div>
-                <a href={url}>
-                  <h1 className="summary-txt-heading text-center mt-3  ">
-                    {heading}
-                  </h1>
-                </a>
-                <div className="p-10 text-slate-200">
-                  <ReactMarkdown>{summaryText}</ReactMarkdown>
+              <div className="px-9">
+                {audioURL && (
+                  <AudioPlayer
+                    autoPlay
+                    src={audioURL}
+                    onPlay={(e) => console.log("onPlay")}
+                    className="rounded-xl"
+                  />
+                )}
+              </div>
+
+              <div className="app-bottom p-9 text-white flex-1">
+                <div className="display-fetched p-5 flex flex-col gap-4">
+                  <div className="loading-ani">
+                    <SkeletonTheme baseColor="#454f5e" highlightColor="#475569">
+                      {headingLoading ? (
+                        <div className="flex justify-center items-center pb-6">
+                          <h1>
+                            <Skeleton height={50} width={800} />
+                          </h1>
+                        </div>
+                      ) : (
+                        <a href={url}>
+                          <h1 className="summary-txt-heading text-center mt-3  ">
+                            {heading}
+                          </h1>
+                        </a>
+                      )}
+
+                      {loading ? (
+                        <p className="p-10">
+                          <Skeleton width={1550} />
+                          <Skeleton width={1500} />
+                          <Skeleton width={1550} />
+                          <Skeleton width={1400} />
+                          <Skeleton width={1350} />
+                          <Skeleton width={1550} />
+                          <Skeleton width={500} />
+                        </p>
+                      ) : (
+                        <div className="p-10 text-slate-200">
+                          <ReactMarkdown>{summaryText}</ReactMarkdown>
+                        </div>
+                      )}
+                    </SkeletonTheme>
+                  </div>
                 </div>
               </div>
             </div>
