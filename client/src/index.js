@@ -14,6 +14,7 @@ root.render(
       redirectUri={window.location.origin}
       audience="asdfaskdfjhaskdfjhalskdfhalskdjfh"
       scope="openid profile email"
+      cacheLocation="localstorage"
     >
       <App />
     </Auth0Provider>
