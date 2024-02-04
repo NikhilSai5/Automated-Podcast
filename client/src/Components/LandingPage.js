@@ -26,16 +26,19 @@ const LandingPage = () => {
           <div className="x flex flex-col justify-between h-full">
             <div>
               <animated.h1
-                className="landing-cs-text flex justify-center gap-6"
+                className="landing-cs-text landing-cs-text-sm lg:flex text-center justify-center gap-6"
                 style={heroTextProps}
               >
-                LISTEN <span className="landing-any">ANYTHING</span>
+                LISTEN{" "}
+                <span className="landing-any landing-any-sm text-center">
+                  ANYTHING
+                </span>
               </animated.h1>
               <animated.h1
-                className="like flex justify-center gap-6"
+                className="like like-sm flex justify-center gap-6"
                 style={heroTextProps}
               >
-                Like <span className="pod">Podcast</span>
+                Like <span className="pod pod-sm">Podcast</span>
               </animated.h1>
               <div className="flex justify-center items-center">
                 <animated.button id="hero-try" style={ButtonProps}>

@@ -131,8 +131,8 @@ code {
 
 .plan-style {
   background-color: #b5bfc8;
-  width: 320px;
-  height: 450px;
+  min-width: 320px;
+  min-height: 450px;
   margin: 10px;
   border-radius: 20px;
   display: flex;
@@ -349,6 +349,68 @@ code {
   font-style: normal;
   font-weight: bolder;
   line-height: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .pod-sm {
+    color: #b8b8b8;
+    font-family: "Gravitas One";
+    font-size: 35px;
+    font-style: normal;
+    font-weight: bolder;
+    line-height: normal;
+  }
+  .like-sm {
+    color: #efefef;
+    font-family: "Gravitas One";
+    font-size: 35px;
+    font-style: normal;
+    font-weight: bolder;
+    line-height: normal;
+  }
+  .landing-any-sm {
+    color: #a9f53c;
+    font-family: Montserrat;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .landing-cs-text-sm {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .Features-bg-text-sm {
+    color: rgba(172, 172, 172, 0.25);
+    font-family: Copperplate Gothic Bold;
+    font-size: 75px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+  }
+  .yt-mobile {
+    display: flex;
+    justify-content: center;
+  }
+  .Features-bg-text-sub-sm {
+    color: rgba(172, 172, 172, 0.25);
+    font-family: Copperplate Gothic Bold;
+    font-size: 85px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+  }
+  .plans-container-sm {
+    justify-content: start;
+    margin-top: 140px;
+    z-index: 100000;
+    width: 100%;
+    overflow: scroll;
+  }
 }
 
 .login-container {
