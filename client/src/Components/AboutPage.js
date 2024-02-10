@@ -38,7 +38,7 @@ const AboutPage = () => {
           </div>
           <ParallaxLayer offset={0.8} speed={0.3}>
             <div className=" flex justify-center items-center">
-              <h1 className="Features-bg-text">NIKHIL</h1>
+              <h1 className="Features-bg-text Features-bg-text-sm">NIKHIL</h1>
             </div>
           </ParallaxLayer>
         </div>

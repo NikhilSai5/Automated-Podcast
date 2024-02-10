@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Summery from "./Pages/Summery";
 import Login from "./Pages/Authentication/Login";
 import Register from "./Pages/Authentication/Register";
+import AllApps from "./Pages/AllApps";
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 // import { Navigate } from "react-router-dom";
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path="/summery" element={<Summery />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
+        <Route path="/allApps" element={<AllApps />} />
       </Routes>
     </BrowserRouter>
   );

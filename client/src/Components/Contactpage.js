@@ -5,7 +5,7 @@ const Contactpage = () => {
   return (
     <>
       <ParallaxLayer offset={4} speed={0.2}>
-        <div className="contact-container h-screen relative flex ">
+        <div className="contact-container h-screen relative flex lg:flex-row flex-col justify-evenly">
           <div className="text-container flex mx-auto">
             <div className="text-content">
               <h1 className="text-header py-5">Contact Me</h1>
@@ -15,9 +15,9 @@ const Contactpage = () => {
               </p>
             </div>
           </div>
-          <div className="contact-container flex items-center mx-auto">
-            <div className="contact-box text-black">
-              <div className="first-last-name flex flex-row gap-2">
+          <div className="contact-container flex items-center lg:mx-auto">
+            <div className="contact-box contact-box-sm text-black">
+              <div className="first-last-name flex lg:flex-row lg:gap-2 flex-col gap-5">
                 <div className="first-last-name-inner">
                   <span>First Name</span>
                   <input type="text" className="first-last-input  " />

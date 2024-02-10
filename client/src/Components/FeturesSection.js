@@ -6,9 +6,13 @@ const FeturesSection = () => {
     <ParallaxLayer offset={1} speed={0.2}>
       <div className="relative h-screen ">
         <div className="absolute inset-0 yt-video-container flex justify-center">
-          <ParallaxLayer offset={0.5} speed={0.5} className="lg:block flex">
+          <ParallaxLayer
+            offset={0.5}
+            speed={0.5}
+            className="lg:block flex lg:mt-12"
+          >
             <iframe
-              className="yt-video-settings mx-auto lg:w-[1000px] lg:h-[515px] yt-mobile"
+              className="yt-video-settings lg:mx-auto lg:w-[1000px] lg:h-[515px] w-full mx-2 rounded-xl yt-mobile"
               src="https://www.youtube.com/embed/RzRhcnN-2XQ?si=JCkClcO610KBluhU"
               title="YouTube video player"
               frameBorder="0"

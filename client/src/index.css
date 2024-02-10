@@ -392,6 +392,7 @@ code {
     font-weight: bold;
     line-height: normal;
   }
+
   .yt-mobile {
     display: flex;
     justify-content: center;
@@ -410,6 +411,9 @@ code {
     z-index: 100000;
     width: 100%;
     overflow: scroll;
+  }
+  .contact-box-sm {
+    width: 100%;
   }
 }
 
@@ -434,4 +438,13 @@ code {
 }
 .profile-container {
   margin-left: 40px;
+}
+.feature-bg {
+  border-radius: 15px;
+  background: rgba(217, 217, 217, 0.1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  width: 360px;
+  height: 370px;
+  flex-shrink: 0;
 }

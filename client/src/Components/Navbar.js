@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
@@ -13,11 +14,15 @@ const Navbar = () => {
     setDropdownVisible(!isDropdownVisible);
   };
 
+  const handleMobileCLick = () => {
+    setMobileMenu(!mobileMenu);
+  };
+
   return (
     <>
-      <nav className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-2xl bg-opacity-10 shadow-2xl border-slate-800">
+      <nav className="sticky top-0 z-10 bg-[#24292e] backdrop-filter backdrop-blur-2xl bg-opacity-40 ">
         <div className=" mx-auto px-10">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-[60px]">
             <div className="flex gap-10">
               <Link to="/">
                 <span className="text-2xl text-white font-semibold">
@@ -32,7 +37,7 @@ const Navbar = () => {
                   to="/summery"
                   className="hover:text-slate-200 transition ease-in-out delay-100"
                 >
-                  App
+                  Listen
                 </Link>
                 <Link
                   href="#"
@@ -66,6 +71,7 @@ const Navbar = () => {
                   class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                   aria-controls="navbar-user"
                   aria-expanded="false"
+                  onClick={handleMobileCLick}
                 >
                   <span class="sr-only">Open main menu</span>
                   <svg
@@ -104,7 +110,7 @@ const Navbar = () => {
                       />
                     </button>
                     {isDropdownVisible && (
-                      <div className="absolute right-0 mt-[20px] bg-white backdrop-filter backdrop-blur-2xl bg-opacity-10  w-48  mr-2 rounded-md shadow-lg">
+                      <div className="absolute right-0 mt-[20px]  bg-[#1e2836]  w-48  mr-2 rounded-md shadow-lg">
                         <div className="px-4 py-3">
                           <span className="block text-sm text-white">
                             {user.nickname}
@@ -121,6 +127,22 @@ const Navbar = () => {
                                 className="block px-4 py-2 text-sm  hover:bg-[#314572] text-white"
                               >
                                 Profile
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="#"
+                                className="block px-4 py-2 text-sm  hover:bg-[#314572] text-white"
+                              >
+                                History
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="#"
+                                className="block px-4 py-2 text-sm  hover:bg-[#314572] text-white"
+                              >
+                                My Queue
                               </Link>
                             </li>
                             <li>
@@ -160,6 +182,48 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      {mobileMenu && (
+        <div className="lg:hidden m-1 ">
+          <div className="lg:flex lg:space-x-4 text-white bg-[#24292e] backdrop-filter bg-opacity-40  w-full  mr-2 rounded-md  flex flex-col gap-4">
+            <y>
+              <Link
+                to="/summery"
+                className="mobile-nav-links hover:bg-[#314572] py-2  transition ease-in-out delay-100 flex justify-center items-center"
+              >
+                Listen
+              </Link>
+
+              <Link
+                href="#"
+                className="mobile-nav-links hover:bg-[#314572] py-2 transition ease-in-out delay-100 flex justify-center items-center"
+              >
+                Features
+              </Link>
+
+              <Link
+                href="#"
+                className="mobile-nav-links hover:bg-[#314572] py-2 transition ease-in-out delay-100 flex justify-center items-center"
+              >
+                Contact
+              </Link>
+
+              <Link
+                href="#"
+                className="mobile-nav-links hover:bg-[#314572] py-2 transition ease-in-out delay-100 flex justify-center items-center"
+              >
+                Plans
+              </Link>
+
+              <Link
+                href="#"
+                className="mobile-nav-links hover:bg-[#314572] py-2 transition ease-in-out delay-100 flex justify-center items-center"
+              >
+                About Me
+              </Link>
+            </y>
+          </div>
+        </div>
+      )}
     </>
   );
 };
