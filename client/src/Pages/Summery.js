@@ -9,7 +9,10 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Summery = () => {
-  const { getAccessTokenSilently } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
+
+  const userDetails = user;
+  // console.log(userDetails);
 
   const [summaryText, setSummaryText] = useState("");
   const [heading, setHeading] = useState("");
@@ -20,9 +23,11 @@ const Summery = () => {
   const [loading, setLoading] = useState("");
 
   const handleUrlSUbmit = async () => {
+    // console.log(userDetails);
     try {
       setHeadLoading(true);
       setLoading(true);
+
       // fetch url, heading, raw_data
       try {
         const response = await fetch("http://localhost:5000/api/scrape", {
@@ -30,7 +35,7 @@ const Summery = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ url: inputUrl }),
+          body: JSON.stringify({ url: inputUrl, userDetails: userDetails }),
           mode: "cors",
         });
 
@@ -38,6 +43,7 @@ const Summery = () => {
           const data = await response.json();
           console.log(data.url);
           setUrl(data.url);
+
           setHeading(data.rawScraperData.heading || "no heading found");
           setHeadLoading(false);
         } else {

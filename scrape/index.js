@@ -38,7 +38,9 @@ app
         url: PostedUrl,
         heading: PostedHeading,
         articles: PostedArticle,
+        userDetails: loggedinUserDetails,
       });
+      // console.log(`got the user details: ${userDetails}`);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -46,12 +48,13 @@ app
   })
   .post(async (req, res) => {
     try {
-      const { url } = req.body;
+      const { url, userDetails } = req.body;
       if (!url) {
         return res.status(400).json({ error: "URL is required" });
       }
 
       PostedUrl = url;
+      loggedinUserDetails = userDetails;
 
       await redisClient.connect();
 

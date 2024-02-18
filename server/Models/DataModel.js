@@ -1,22 +1,46 @@
 // dataModel.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const dataSchema = new mongoose.Schema({
   url: {
     type: String,
   },
-  heading : {
+  heading: {
     type: String,
   },
   summarizedText: {
     type: String,
   },
   audioUrl: {
-    type: String, 
+    type: String,
   },
-
 });
 
-const DataModel = mongoose.model('Data', dataSchema);
+const userProfile = new mongoose.Schema({
+  email: {
+    type: String,
+  },
+  name: {
+    type: String,
+  },
+  nickname: {
+    type: String,
+  },
+  picture: {
+    type: String,
+  },
+  sub: {
+    type: String,
+  },
+  updated_at: {
+    type: String,
+  },
+});
 
-module.exports = DataModel;
+const DataModel = mongoose.model("Data", dataSchema);
+const userProfileModel = mongoose.model("userProfile", userProfile);
+
+module.exports = {
+  DataModel,
+  userProfileModel,
+};

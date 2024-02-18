@@ -24,6 +24,7 @@ app.get("/summarize-text", async (req, res) => {
   });
 
   const fetchedURL = await resUrl.json();
+  console.log(fetchedURL.userDetails);
   console.log(fetchedURL.url);
   console.log(fetchedURL.articles);
 
