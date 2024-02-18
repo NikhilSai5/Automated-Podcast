@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const DataModel = require("./Models/DataModel");
+const { DataSchemaModel } = require("./Models/DataSchemaModel");
+const { userProfileModel } = require("./Models/userProfileModel");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -48,14 +49,26 @@ app.get("/fetch-and-save", async (req, res) => {
 
     console.log(summarizedAudioURL);
 
-    const newData = new DataModel({
+    // saving podcast details
+    const newData = new DataSchemaModel({
       url: fetchedURL.url,
       heading: fetchedURL.heading,
       summarizedText: summarizedData,
       audioUrl: summarizedAudioURL,
     });
-
     await newData.save();
+
+    //saving user details
+    const newUserData = new userProfileModel({
+      email: fetchedURL.userDetails.email,
+      name: fetchedURL.userDetails.name,
+      nickname: fetchedURL.userDetails.nickname,
+      picture: fetchedURL.userDetails.picture,
+      sub: fetchedURL.userDetails.sub,
+      updated_at: fetchedURL.userDetails.updated_at,
+    });
+
+    await newUserData.save();
 
     console.log("Data fetched and stored successfully");
   } catch (error) {
